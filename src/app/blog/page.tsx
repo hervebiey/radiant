@@ -1,10 +1,10 @@
-import { Button } from '@/components/button'
-import { Container } from '@/components/container'
-import { Footer } from '@/components/footer'
-import { GradientBackground } from '@/components/gradient'
-import { Link } from '@/components/link'
-import { Navbar } from '@/components/navbar'
-import { Heading, Lead, Subheading } from '@/components/text'
+import { Button } from '@/components-radiant/button'
+import { Container } from '@/components-radiant/container'
+import { Footer } from '@/components-radiant/footer'
+import { GradientBackground } from '@/components-radiant/gradient'
+import { Link } from '@/components-radiant/link'
+import { Navbar } from '@/components-radiant/navbar'
+import { Heading, Lead, Subheading } from '@/components-radiant/text'
 import { image } from '@/sanity/image'
 import {
   getCategories,
