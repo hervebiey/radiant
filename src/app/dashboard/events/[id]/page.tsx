@@ -1,4 +1,4 @@
-import { Stat } from '@/app/page'
+import { Stat } from '@/app/dashboard/page'
 import { Badge } from '@/components/badge'
 import { Button } from '@/components/button'
 import { Heading, Subheading } from '@/components/heading'
@@ -28,7 +28,7 @@ export default async function Event({ params }: { params: { id: string } }) {
   return (
     <>
       <div className="max-lg:hidden">
-        <Link href="/events" className="inline-flex items-center gap-2 text-sm/6 text-zinc-500 dark:text-zinc-400">
+        <Link href="/dashboard/events" className="inline-flex items-center gap-2 text-sm/6 text-zinc-500 dark:text-zinc-400">
           <ChevronLeftIcon className="size-4 fill-zinc-400 dark:fill-zinc-500" />
           Events
         </Link>
