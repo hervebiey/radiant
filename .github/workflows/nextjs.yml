@@ -57,12 +57,8 @@ jobs:
                     username: ${{ secrets.SSH_USERNAME }}
                     password: ${{ secrets.SSH_PASSWORD }}
                     port: "22"
-                    source: |
-                        .next/ 
-                        package.json
-                        package-lock.json
-                        public/
-                    target: "~/serviceportaal.be"
+                    source: ".next/, package.json, package-lock.json, public/"
+                    target: "~/serviceportaal.be/frontend"
 
             # Step 7: Install dependencies and start/restart the Node.js app using pm2
             -   name: Restart Node.js app on DreamHost VPS
@@ -73,7 +69,7 @@ jobs:
                     password: ${{ secrets.SSH_PASSWORD }}
                     port: "22"
                     script: |
-                        cd ~/serviceportaal.be
+                        cd ~/serviceportaal.be/frontend
                         npm install --production
                         pm2 stop all || true
                         pm2 start npm --name "serviceportaal" -- start -- -p 8000
