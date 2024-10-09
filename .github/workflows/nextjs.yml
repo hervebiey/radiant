@@ -69,16 +69,13 @@ jobs:
                     password: ${{ secrets.SSH_PASSWORD }}
                     port: "22"
                     script: |
-                    # Install NVM if not installed
                         if [ ! -d "$HOME/.nvm" ]; then
                         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
                         
-                    # Source NVM to ensure it's available
                         export NVM_DIR="$HOME/.nvm"
                         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
                         fi
                         
-                    # Install Node.js if it's not installed
                         if ! command -v node &> /dev/null; then
                         source ~/.nvm/nvm.sh
                         nvm install node
