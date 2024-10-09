@@ -57,30 +57,12 @@ jobs:
                     username: ${{ secrets.SSH_USERNAME }}
                     password: ${{ secrets.SSH_PASSWORD }}
                     port: "22"
-                    source: "."
+                    source: |
+                        .next/ 
+                        package.json
+                        package-lock.json
+                        public/
                     target: "~/serviceportaal.be"
-
-            # Extra Step First Time
-            -   name: Install NVM, Node.js, npm, and pm2
-                uses: appleboy/ssh-action@master
-                with:
-                    host: ${{ secrets.SSH_HOST }}
-                    username: ${{ secrets.SSH_USERNAME }}
-                    password: ${{ secrets.SSH_PASSWORD }}
-                    port: "22"
-                    script: |
-                        if [ ! -d "$HOME/.nvm" ]; then
-                            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-                        fi
-                        
-                        export NVM_DIR="$HOME/.nvm"
-                        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                        
-                        nvm install node
-                        nvm use node
-                        nvm alias default node
-                        
-                        $NVM_DIR/versions/node/$(nvm current)/bin/npm install -g pm2
 
             # Step 7: Install dependencies and start/restart the Node.js app using pm2
             -   name: Restart Node.js app on DreamHost VPS
@@ -92,6 +74,6 @@ jobs:
                     port: "22"
                     script: |
                         cd ~/serviceportaal.be
-                        npm install
+                        npm install --production
                         pm2 stop all || true
                         pm2 start npm --name "serviceportaal" -- start -- -p 8000
