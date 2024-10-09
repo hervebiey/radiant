@@ -11,22 +11,21 @@ import type { Metadata } from 'next'
 import { Address } from './address'
 
 export const metadata: Metadata = {
-  title: 'Settings',
+  title: 'Instellingen',
 }
 
 export default function Settings() {
   return (
     <form method="post" className="mx-auto max-w-4xl">
-      <Heading>Settings</Heading>
+      <Heading>Instellingen</Heading>
       <Divider className="my-10 mt-6" />
 
       <section className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
         <div className="space-y-1">
-          <Subheading>Organization Name</Subheading>
-          <Text>This will be displayed on your public profile.</Text>
+          <Subheading>Bedrijfsnaam</Subheading>
         </div>
         <div>
-          <Input aria-label="Organization Name" name="name" defaultValue="Catalyst" />
+          <Input aria-label="Organization Name" name="name" defaultValue="Examoplo" />
         </div>
       </section>
 
@@ -34,8 +33,8 @@ export default function Settings() {
 
       <section className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
         <div className="space-y-1">
-          <Subheading>Organization Bio</Subheading>
-          <Text>This will be displayed on your public profile. Maximum 240 characters.</Text>
+          <Subheading>Bedrijfsomschrijving</Subheading>
+          <Text>Maximum 240 characters.</Text>
         </div>
         <div>
           <Textarea aria-label="Organization Bio" name="bio" />
@@ -46,15 +45,11 @@ export default function Settings() {
 
       <section className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
         <div className="space-y-1">
-          <Subheading>Organization Email</Subheading>
-          <Text>This is how customers can contact you for support.</Text>
+          <Subheading>Bedrijfsemail</Subheading>
+          <Text>Dit is hoe klanten contact met u kunnen opnemen voor ondersteuning.</Text>
         </div>
         <div className="space-y-4">
-          <Input type="email" aria-label="Organization Email" name="email" defaultValue="info@example.com" />
-          <CheckboxField>
-            <Checkbox name="email_is_public" defaultChecked />
-            <Label>Show email on public profile</Label>
-          </CheckboxField>
+          <Input type="email" aria-label="Organization Email" name="email" defaultValue="info@examoplo.com" />
         </div>
       </section>
 
@@ -62,25 +57,10 @@ export default function Settings() {
 
       <section className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
         <div className="space-y-1">
-          <Subheading>Address</Subheading>
-          <Text>This is where your organization is registered.</Text>
+          <Subheading>Adres</Subheading>
+          <Text>Dit is waar uw bedrijf is geregistreerd.</Text>
         </div>
         <Address />
-      </section>
-
-      <Divider className="my-10" soft />
-
-      <section className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
-        <div className="space-y-1">
-          <Subheading>Currency</Subheading>
-          <Text>The currency that your organization will be collecting.</Text>
-        </div>
-        <div>
-          <Select aria-label="Currency" name="currency" defaultValue="cad">
-            <option value="cad">CAD - Canadian Dollar</option>
-            <option value="usd">USD - United States Dollar</option>
-          </Select>
-        </div>
       </section>
 
       <Divider className="my-10" soft />
@@ -89,7 +69,7 @@ export default function Settings() {
         <Button type="reset" plain>
           Reset
         </Button>
-        <Button type="submit">Save changes</Button>
+        <Button type="submit">Wijzigingen Opslaan</Button>
       </div>
     </form>
   )

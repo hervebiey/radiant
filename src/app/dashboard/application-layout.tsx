@@ -22,7 +22,7 @@ import {
 	SidebarSpacer,
 } from '@/components/sidebar'
 import { SidebarLayout } from '@/components/sidebar-layout'
-import { getEvents } from '@/data'
+import { getProducts } from '@/data'
 import {
 	ArrowRightStartOnRectangleIcon,
 	ChevronDownIcon,
@@ -42,27 +42,32 @@ import {
 	TicketIcon,
 } from '@heroicons/react/20/solid'
 import { usePathname } from 'next/navigation'
+import React from "react";
 
 function AccountDropdownMenu({ anchor }: { anchor: 'top start' | 'bottom end' }) {
 	return (
 		<DropdownMenu className="min-w-64" anchor={anchor}>
 			<DropdownItem href="#">
 				<UserCircleIcon />
-				<DropdownLabel>My account</DropdownLabel>
+				<DropdownLabel>Mijn account</DropdownLabel>
+			</DropdownItem>
+			<DropdownItem href="/dashboard/settings">
+				<Cog8ToothIcon />
+				<DropdownLabel>Instellingen</DropdownLabel>
 			</DropdownItem>
 			<DropdownDivider />
 			<DropdownItem href="#">
 				<ShieldCheckIcon />
-				<DropdownLabel>Privacy policy</DropdownLabel>
+				<DropdownLabel>Privacybeleid</DropdownLabel>
 			</DropdownItem>
 			<DropdownItem href="#">
 				<LightBulbIcon />
-				<DropdownLabel>Share feedback</DropdownLabel>
+				<DropdownLabel>Feedback delen</DropdownLabel>
 			</DropdownItem>
 			<DropdownDivider />
 			<DropdownItem href="#">
 				<ArrowRightStartOnRectangleIcon />
-				<DropdownLabel>Sign out</DropdownLabel>
+				<DropdownLabel>Afmelden</DropdownLabel>
 			</DropdownItem>
 		</DropdownMenu>
 	)
@@ -72,7 +77,7 @@ export function ApplicationLayout({
 	                                  events,
 	                                  children,
                                   }: {
-	events: Awaited<ReturnType<typeof getEvents>>
+	events: Awaited<ReturnType<typeof getProducts>>
 	children: React.ReactNode
 }) {
 	let pathname = usePathname()
@@ -97,28 +102,19 @@ export function ApplicationLayout({
 					<SidebarHeader>
 						<Dropdown>
 							<DropdownButton as={SidebarItem}>
-								<Avatar src="/teams/catalyst.svg" />
-								<SidebarLabel>Catalyst</SidebarLabel>
+								<Avatar src="/teams/logo-symbol.svg" />
+								<SidebarLabel>ServicePortaal</SidebarLabel>
 								<ChevronDownIcon />
 							</DropdownButton>
 							<DropdownMenu className="min-w-80 lg:min-w-64" anchor="bottom start">
-								<DropdownItem href="/dashboard/settings">
-									<Cog8ToothIcon />
-									<DropdownLabel>Settings</DropdownLabel>
+								<DropdownItem href="/dashboard">
+									<HomeIcon />
+									<DropdownLabel>Dashboard</DropdownLabel>
 								</DropdownItem>
 								<DropdownDivider />
-								<DropdownItem href="#">
-									<Avatar slot="icon" src="/teams/catalyst.svg" />
-									<DropdownLabel>Catalyst</DropdownLabel>
-								</DropdownItem>
-								<DropdownItem href="#">
-									<Avatar slot="icon" initials="BE" className="bg-purple-500 text-white" />
-									<DropdownLabel>Big Events</DropdownLabel>
-								</DropdownItem>
-								<DropdownDivider />
-								<DropdownItem href="#">
-									<PlusIcon />
-									<DropdownLabel>New team&hellip;</DropdownLabel>
+								<DropdownItem href="/">
+									<Avatar slot="icon" src="/teams/logo-symbol.svg" />
+									<DropdownLabel>Thuispagina</DropdownLabel>
 								</DropdownItem>
 							</DropdownMenu>
 						</Dropdown>
@@ -128,29 +124,16 @@ export function ApplicationLayout({
 						<SidebarSection>
 							<SidebarItem href="/dashboard" current={pathname === '/'}>
 								<HomeIcon />
-								<SidebarLabel>Home</SidebarLabel>
+								<SidebarLabel>Dashboard</SidebarLabel>
 							</SidebarItem>
-							<SidebarItem href="/dashboard/events" current={pathname.startsWith('/events')}>
+							<SidebarItem href="/dashboard/producten" current={pathname.startsWith('/events')}>
 								<Square2StackIcon />
-								<SidebarLabel>Events</SidebarLabel>
+								<SidebarLabel>Producten</SidebarLabel>
 							</SidebarItem>
 							<SidebarItem href="/dashboard/orders" current={pathname.startsWith('/orders')}>
 								<TicketIcon />
 								<SidebarLabel>Orders</SidebarLabel>
 							</SidebarItem>
-							<SidebarItem href="/dashboard/settings" current={pathname.startsWith('/settings')}>
-								<Cog6ToothIcon />
-								<SidebarLabel>Settings</SidebarLabel>
-							</SidebarItem>
-						</SidebarSection>
-						
-						<SidebarSection className="max-lg:hidden">
-							<SidebarHeading>Upcoming Events</SidebarHeading>
-							{events.map((event) => (
-								<SidebarItem key={event.id} href={event.url}>
-									{event.name}
-								</SidebarItem>
-							))}
 						</SidebarSection>
 						
 						<SidebarSpacer />
@@ -158,11 +141,11 @@ export function ApplicationLayout({
 						<SidebarSection>
 							<SidebarItem href="#">
 								<QuestionMarkCircleIcon />
-								<SidebarLabel>Support</SidebarLabel>
+								<SidebarLabel>Forum</SidebarLabel>
 							</SidebarItem>
 							<SidebarItem href="#">
 								<SparklesIcon />
-								<SidebarLabel>Changelog</SidebarLabel>
+								<SidebarLabel>Hulpcentrum</SidebarLabel>
 							</SidebarItem>
 						</SidebarSection>
 					</SidebarBody>
@@ -175,7 +158,7 @@ export function ApplicationLayout({
                   <span className="min-w-0">
                     <span className="block truncate text-sm/5 font-medium text-zinc-950 dark:text-white">Erica</span>
                     <span className="block truncate text-xs/5 font-normal text-zinc-500 dark:text-zinc-400">
-                      erica@example.com
+                      erica@examoplo.com
                     </span>
                   </span>
                 </span>

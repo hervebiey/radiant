@@ -13,7 +13,7 @@ export function RefundOrder({ amount, ...props }: { amount: string } & React.Com
 
   return (
     <>
-      <Button type="button" onClick={() => setIsOpen(true)} {...props} />
+      <Button type="button" onClick={() => setIsOpen(true)} {...props}/>
       <Dialog open={isOpen} onClose={setIsOpen}>
         <DialogTitle>Refund payment</DialogTitle>
         <DialogDescription>

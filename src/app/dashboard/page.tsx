@@ -14,7 +14,7 @@ export function Stat({ title, value, change }: { title: string; value: string; c
 			<div className="mt-3 text-3xl/8 font-semibold sm:text-2xl/8">{value}</div>
 			<div className="mt-3 text-sm/6 sm:text-xs/6">
 				<Badge color={change.startsWith('+') ? 'lime' : 'pink'}>{change}</Badge>{' '}
-				<span className="text-zinc-500">from last week</span>
+				<span className="text-zinc-500">sinds vorige week</span>
 			</div>
 		</div>
 	)
@@ -25,33 +25,34 @@ export default async function Home() {
 	
 	return (
 		<>
-			<Heading>Good afternoon, Erica</Heading>
+			<Heading>Goedemiddag, Erica</Heading>
 			<div className="mt-8 flex items-end justify-between">
-				<Subheading>Overview</Subheading>
+				<Subheading>Overzicht</Subheading>
 				<div>
 					<Select name="period">
-						<option value="last_week">Last week</option>
-						<option value="last_two">Last two weeks</option>
-						<option value="last_month">Last month</option>
-						<option value="last_quarter">Last quarter</option>
+						<option value="last_week">Laatste week</option>
+						<option value="last_two">Laatste twee weken</option>
+						<option value="last_month">Laatste maand</option>
+						<option value="last_quarter">Laatste kwartaal</option>
 					</Select>
 				</div>
 			</div>
 			<div className="mt-4 grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
-				<Stat title="Total revenue" value="$2.6M" change="+4.5%" />
-				<Stat title="Average order value" value="$455" change="-0.5%" />
-				<Stat title="Tickets sold" value="5,888" change="+4.5%" />
-				<Stat title="Pageviews" value="823,067" change="+21.2%" />
+				<Stat title="Totaal besteld" value="€12,500" change="+3.2%" />
+				<Stat title="Gemiddelde orderwaarde" value="€250" change="-0.5%" />
+				<Stat title="Bestellingen" value="58" change="+5.5%" />
+				<Stat title="Inspecties afgerond" value="45" change="+2.0%" />
 			</div>
-			<Subheading className="mt-14">Recent orders</Subheading>
+			<Subheading className="mt-14">Recente bestellingen</Subheading>
 			<Table className="mt-4 [--gutter:theme(spacing.6)] lg:[--gutter:theme(spacing.10)]">
 				<TableHead>
 					<TableRow>
-						<TableHeader>Order number</TableHeader>
-						<TableHeader>Purchase date</TableHeader>
-						<TableHeader>Customer</TableHeader>
-						<TableHeader>Event</TableHeader>
-						<TableHeader className="text-right">Amount</TableHeader>
+						<TableHeader>Ordernummer</TableHeader>
+						<TableHeader>Besteldatum</TableHeader>
+						<TableHeader>Contactpersoon</TableHeader>
+						<TableHeader>Product</TableHeader>
+						<TableHeader>Aantal</TableHeader>
+						<TableHeader className="text-right">Totaalbedrag</TableHeader>
 					</TableRow>
 				</TableHead>
 				<TableBody>
@@ -62,11 +63,11 @@ export default async function Home() {
 							<TableCell>{order.customer.name}</TableCell>
 							<TableCell>
 								<div className="flex items-center gap-2">
-									<Avatar src={order.event.thumbUrl} className="size-6" />
-									<span>{order.event.name}</span>
+									<span>{order.product.name}</span>
 								</div>
 							</TableCell>
-							<TableCell className="text-right">US{order.amount.usd}</TableCell>
+							<TableCell>{order.amount}</TableCell>
+							<TableCell className="text-right">{order.price.eur}</TableCell>
 						</TableRow>
 					))}
 				</TableBody>

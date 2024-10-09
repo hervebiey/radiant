@@ -68,13 +68,14 @@ function ProductOrder({ product }: { product: { name: string; price: number } })
   const [startDate, setStartDate] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
   
   const totalPrice = product.price * quantity
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     alert(
-        `${product.name} besteld! Facturatie: ${billingInfo}, Adres: ${address}, Telefoon: ${phoneNumber}, Email: ${email}, Aantal: ${quantity}, Startdatum: ${startDate}, Totaal: €${totalPrice}`
+        `${product.name} besteld! Facturatie: ${billingInfo}, Adres: ${address}, Naam: ${name}, Telefoon: ${phoneNumber}, Email: ${email}, Aantal: ${quantity}, Startdatum: ${startDate}, Totaal: €${totalPrice}`
     )
   }
   
@@ -104,6 +105,20 @@ function ProductOrder({ product }: { product: { name: string; price: number } })
                     placeholder="Bedrijfsnaam of klantnaam"
                     value={billingInfo}
                     onChange={(e) => setBillingInfo(e.target.value)}
+                    required
+                />
+              </div>
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                  Contactpersoon
+                </label>
+                <input
+                    id="name"
+                    type="text"
+                    className="mt-1 block w-full rounded-md border p-2"
+                    placeholder="Naam van contactpersoon"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     required
                 />
               </div>

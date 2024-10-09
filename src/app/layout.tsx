@@ -1,5 +1,6 @@
 import '@/styles/tailwind.css'
 import type { Metadata } from 'next'
+import React from "react";
 
 export const metadata: Metadata = {
   title: {
@@ -26,6 +27,7 @@ export default function RootLayout({
           title="The Radiant Blog"
           href="/blog/feed.xml"
         />
+        <title>ServicePortaal</title>
       </head>
       <body className="text-gray-950 antialiased">{children}</body>
     </html>

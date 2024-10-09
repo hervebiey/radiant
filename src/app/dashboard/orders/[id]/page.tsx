@@ -10,6 +10,7 @@ import { BanknotesIcon, CalendarIcon, ChevronLeftIcon, CreditCardIcon } from '@h
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { RefundOrder } from './refund'
+import {NumberIcon} from "@sanity/icons";
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   let order = await getOrder(params.id)
@@ -29,30 +30,29 @@ export default async function Order({ params }: { params: { id: string } }) {
   return (
     <>
       <div className="max-lg:hidden">
-        <Link href="/dashboard/orders" className="inline-flex items-center gap-2 text-sm/6 text-zinc-500 dark:text-zinc-400">
+        <Link
+          href="/dashboard/orders"
+          className="inline-flex items-center gap-2 text-sm/6 text-zinc-500 dark:text-zinc-400"
+        >
           <ChevronLeftIcon className="size-4 fill-zinc-400 dark:fill-zinc-500" />
-          Orders
+          Bestellingen
         </Link>
       </div>
       <div className="mt-4 lg:mt-8">
         <div className="flex items-center gap-4">
-          <Heading>Order #{order.id}</Heading>
-          <Badge color="lime">Successful</Badge>
+          <Heading>Bestelling #{order.id}</Heading>
+          <Badge color="lime">Inspectie Voltooid</Badge>
+          <Badge color="lime">Factuur Betaald</Badge>
         </div>
         <div className="isolate mt-2.5 flex flex-wrap justify-between gap-x-6 gap-y-4">
           <div className="flex flex-wrap gap-x-10 gap-y-4 py-1.5">
             <span className="flex items-center gap-3 text-base/6 text-zinc-950 sm:text-sm/6 dark:text-white">
-              <BanknotesIcon className="size-4 shrink-0 fill-zinc-400 dark:fill-zinc-500" />
-              <span>US{order.amount.usd}</span>
+              <NumberIcon className="size-4 shrink-0 fill-zinc-400 dark:fill-zinc-500" />
+              <span className="inline-flex gap-3">{order.amount}</span>
             </span>
             <span className="flex items-center gap-3 text-base/6 text-zinc-950 sm:text-sm/6 dark:text-white">
-              <CreditCardIcon className="size-4 shrink-0 fill-zinc-400 dark:fill-zinc-500" />
-              <span className="inline-flex gap-3">
-                {order.payment.card.type}{' '}
-                <span>
-                  <span aria-hidden="true">••••</span> {order.payment.card.number}
-                </span>
-              </span>
+              <BanknotesIcon className="size-4 shrink-0 fill-zinc-400 dark:fill-zinc-500" />
+              <span>{order.price.eur}</span>
             </span>
             <span className="flex items-center gap-3 text-base/6 text-zinc-950 sm:text-sm/6 dark:text-white">
               <CalendarIcon className="size-4 shrink-0 fill-zinc-400 dark:fill-zinc-500" />
@@ -60,67 +60,44 @@ export default async function Order({ params }: { params: { id: string } }) {
             </span>
           </div>
           <div className="flex gap-4">
-            <RefundOrder outline amount={order.amount.usd}>
-              Refund
-            </RefundOrder>
-            <Button>Resend Invoice</Button>
+            <Button outline as="a" href="#" download>
+              Rapport Downloaded
+            </Button>
+            <Button outline as="a" href="#" download>
+              Factuur Downloaded
+            </Button>
+            <Button>Factuur Opnieuw Verzenden</Button>
           </div>
         </div>
       </div>
       <div className="mt-12">
-        <Subheading>Summary</Subheading>
+        <Subheading>Samenvatting</Subheading>
         <Divider className="mt-4" />
         <DescriptionList>
-          <DescriptionTerm>Customer</DescriptionTerm>
-          <DescriptionDetails>{order.customer.name}</DescriptionDetails>
-          <DescriptionTerm>Event</DescriptionTerm>
+          <DescriptionTerm>Product</DescriptionTerm>
           <DescriptionDetails>
-            <Link href={order.event.url} className="flex items-center gap-2">
-              <Avatar src={order.event.thumbUrl} className="size-6" />
-              <span>{order.event.name}</span>
+            <Link href={order.product.url} className="flex items-center gap-2">
+              <span>{order.product.name}</span>
             </Link>
           </DescriptionDetails>
-          <DescriptionTerm>Amount</DescriptionTerm>
-          <DescriptionDetails>US{order.amount.usd}</DescriptionDetails>
-          <DescriptionTerm>Amount after exchange rate</DescriptionTerm>
-          <DescriptionDetails>
-            US{order.amount.usd} &rarr; CA{order.amount.cad}
-          </DescriptionDetails>
-          <DescriptionTerm>Fee</DescriptionTerm>
-          <DescriptionDetails>CA{order.amount.fee}</DescriptionDetails>
-          <DescriptionTerm>Net</DescriptionTerm>
-          <DescriptionDetails>CA{order.amount.net}</DescriptionDetails>
+          <DescriptionTerm>Aantal</DescriptionTerm>
+          <DescriptionDetails>{order.amount}</DescriptionDetails>
+          <DescriptionTerm>Totaalbedrag</DescriptionTerm>
+          <DescriptionDetails>{order.price.eur}</DescriptionDetails>
+          <DescriptionTerm>Adres</DescriptionTerm>
+          <DescriptionDetails>{order.address}</DescriptionDetails>
         </DescriptionList>
       </div>
       <div className="mt-12">
-        <Subheading>Payment method</Subheading>
+        <Subheading>Contactpersoon</Subheading>
         <Divider className="mt-4" />
         <DescriptionList>
-          <DescriptionTerm>Transaction ID</DescriptionTerm>
-          <DescriptionDetails>{order.payment.transactionId}</DescriptionDetails>
-          <DescriptionTerm>Card number</DescriptionTerm>
-          <DescriptionDetails>•••• {order.payment.card.number}</DescriptionDetails>
-          <DescriptionTerm>Card type</DescriptionTerm>
-          <DescriptionDetails>{order.payment.card.type}</DescriptionDetails>
-          <DescriptionTerm>Card expiry</DescriptionTerm>
-          <DescriptionDetails>{order.payment.card.expiry}</DescriptionDetails>
-          <DescriptionTerm>Owner</DescriptionTerm>
+          <DescriptionTerm>Naam</DescriptionTerm>
           <DescriptionDetails>{order.customer.name}</DescriptionDetails>
-          <DescriptionTerm>Email address</DescriptionTerm>
+          <DescriptionTerm>E-mailadres</DescriptionTerm>
           <DescriptionDetails>{order.customer.email}</DescriptionDetails>
-          <DescriptionTerm>Address</DescriptionTerm>
-          <DescriptionDetails>{order.customer.address}</DescriptionDetails>
-          <DescriptionTerm>Country</DescriptionTerm>
-          <DescriptionDetails>
-            <span className="inline-flex gap-3">
-              <img src={order.customer.countryFlagUrl} alt={order.customer.country} />
-              {order.customer.country}
-            </span>
-          </DescriptionDetails>
-          <DescriptionTerm>CVC</DescriptionTerm>
-          <DescriptionDetails>
-            <Badge color="lime">Passed successfully</Badge>
-          </DescriptionDetails>
+          <DescriptionTerm>Telefoonnummer</DescriptionTerm>
+          <DescriptionDetails>{order.customer.phone}</DescriptionDetails>
         </DescriptionList>
       </div>
     </>

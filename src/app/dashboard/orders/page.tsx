@@ -6,7 +6,7 @@ import { getOrders } from '@/data'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Orders',
+  title: 'Bestellingen',
 }
 
 export default async function Orders() {
@@ -15,17 +15,18 @@ export default async function Orders() {
   return (
     <>
       <div className="flex items-end justify-between gap-4">
-        <Heading>Orders</Heading>
-        <Button className="-my-0.5">Create order</Button>
+        <Heading>Bestellingen</Heading>
+        <Button className="-my-0.5">Nieuwe Bestelling</Button>
       </div>
       <Table className="mt-8 [--gutter:theme(spacing.6)] lg:[--gutter:theme(spacing.10)]">
         <TableHead>
           <TableRow>
-            <TableHeader>Order number</TableHeader>
-            <TableHeader>Purchase date</TableHeader>
-            <TableHeader>Customer</TableHeader>
-            <TableHeader>Event</TableHeader>
-            <TableHeader className="text-right">Amount</TableHeader>
+            <TableHeader>Ordernummer</TableHeader>
+            <TableHeader>Besteldatum</TableHeader>
+            <TableHeader>Contactpersoon</TableHeader>
+            <TableHeader>Product</TableHeader>
+            <TableHeader>Aantal</TableHeader>
+            <TableHeader className="text-right">Totaalbedrag</TableHeader>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -36,11 +37,11 @@ export default async function Orders() {
               <TableCell>{order.customer.name}</TableCell>
               <TableCell>
                 <div className="flex items-center gap-2">
-                  <Avatar src={order.event.thumbUrl} className="size-6" />
-                  <span>{order.event.name}</span>
+                  <span>{order.product.name}</span>
                 </div>
               </TableCell>
-              <TableCell className="text-right">US{order.amount.usd}</TableCell>
+              <TableCell>{order.amount}</TableCell>
+              <TableCell className="text-right">{order.price.eur}</TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -14,23 +14,23 @@ export function Address() {
       <Input
         aria-label="Street Address"
         name="address"
-        placeholder="Street Address"
-        defaultValue="147 Catalyst Ave"
+        placeholder="Straatnaam en huisnummer"
+        defaultValue="Krijgslaan 21"
         className="col-span-2"
       />
-      <Input aria-label="City" name="city" placeholder="City" defaultValue="Toronto" className="col-span-2" />
-      <Listbox aria-label="Region" name="region" placeholder="Region" defaultValue="Ontario">
+      <Input aria-label="City" name="city" placeholder="Stad" defaultValue="Gent" className="col-span-2" />
+      <Listbox aria-label="Region" name="region" placeholder="Regio" defaultValue="Oost-Vlaanderen">
         {country.regions.map((region) => (
           <ListboxOption key={region} value={region}>
             <ListboxLabel>{region}</ListboxLabel>
           </ListboxOption>
         ))}
       </Listbox>
-      <Input aria-label="Postal code" name="postal_code" placeholder="Postal Code" defaultValue="A1A 1A1" />
+      <Input aria-label="Postal code" name="postal_code" placeholder="Postcode" defaultValue="9000" />
       <Listbox
         aria-label="Country"
         name="country"
-        placeholder="Country"
+        placeholder="Land"
         by="code"
         value={country}
         onChange={(country) => setCountry(country)}
@@ -38,7 +38,6 @@ export function Address() {
       >
         {countries.map((country) => (
           <ListboxOption key={country.code} value={country}>
-            <img className="w-5 sm:w-4" src={country.flagUrl} alt="" />
             <ListboxLabel>{country.name}</ListboxLabel>
           </ListboxOption>
         ))}

@@ -19,7 +19,7 @@ export function AnimatedNumber({
   decimals?: number
 }) {
   let ref = useRef(null)
-  let isInView = useInView(ref, { once: true, amount: 0.5 })
+  let isInView = useInView(ref, { once: true, price: 0.5 })
 
   let value = useMotionValue(start)
   let spring = useSpring(value, { damping: 30, stiffness: 100 })

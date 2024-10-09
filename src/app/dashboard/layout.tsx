@@ -1,4 +1,4 @@
-import { getEvents } from '@/data'
+import { getProducts } from '@/data'
 import '@/styles/tailwind.css'
 import type { Metadata } from 'next'
 import type React from 'react'
@@ -6,14 +6,14 @@ import { ApplicationLayout } from './application-layout'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Catalyst',
-    default: 'Catalyst',
+    template: 'Dashboard: %s',
+    default: 'Dashboard',
   },
   description: '',
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  let events = await getEvents()
+  let events = await getProducts()
 
   return (
     <html
@@ -23,6 +23,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         <link rel="preconnect" href="https://rsms.me/" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+        <title>Dashboard</title>
       </head>
       <body>
         <ApplicationLayout events={events}>{children}</ApplicationLayout>
