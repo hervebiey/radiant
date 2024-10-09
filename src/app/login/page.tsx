@@ -24,12 +24,12 @@ export default function Login() {
                 <Mark className="h-9 fill-black" />
               </Link>
             </div>
-            <h1 className="mt-8 text-base/6 font-medium">Welcome back!</h1>
+            <h1 className="mt-8 text-base/6 font-medium">Welkom terug!</h1>
             <p className="mt-1 text-sm/5 text-gray-600">
-              Sign in to your account to continue.
+              Meld u aan bij uw account om verder te gaan.
             </p>
             <Field className="mt-8 space-y-3">
-              <Label className="text-sm/5 font-medium">Email</Label>
+              <Label className="text-sm/5 font-medium">E-mail</Label>
               <Input
                 required
                 autoFocus
@@ -43,7 +43,7 @@ export default function Login() {
               />
             </Field>
             <Field className="mt-8 space-y-3">
-              <Label className="text-sm/5 font-medium">Password</Label>
+              <Label className="text-sm/5 font-medium">Wachtwoord</Label>
               <Input
                 required
                 type="password"
@@ -67,22 +67,22 @@ export default function Login() {
                 >
                   <CheckIcon className="fill-white opacity-0 group-data-[checked]:opacity-100" />
                 </Checkbox>
-                <Label>Remember me</Label>
+                <Label>Onthoud mij</Label>
               </Field>
               <Link href="#" className="font-medium hover:text-gray-600">
-                Forgot password?
+                Wachtwoord vergeten?
               </Link>
             </div>
             <div className="mt-8">
               <Button type="submit" className="w-full">
-                Sign in
+                Aanmelden
               </Button>
             </div>
           </form>
           <div className="m-1.5 rounded-lg bg-gray-50 py-4 text-center text-sm/5 ring-1 ring-black/5">
-            Not a member?{' '}
+            Nog geen lid?{' '}
             <Link href="#" className="font-medium hover:text-gray-600">
-              Create an account
+              Maak een account aan
             </Link>
           </div>
         </div>
