@@ -61,7 +61,7 @@ jobs:
                     target: "~/serviceportaal.be"
 
             # Extra Step First Time
-            -   name: Executing remote ssh commands
+            -   name: Install NVM, Node.js, npm, and pm2
                 uses: appleboy/ssh-action@master
                 with:
                     host: ${{ secrets.SSH_HOST }}
@@ -70,21 +70,26 @@ jobs:
                     port: "22"
                     script: |
                         if [ ! -d "$HOME/.nvm" ]; then
-                        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+                            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+                            export NVM_DIR="$HOME/.nvm"
+                            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                        fi
                         
                         export NVM_DIR="$HOME/.nvm"
                         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                        fi
                         
                         if ! command -v node &> /dev/null; then
-                        source ~/.nvm/nvm.sh
-                        nvm install node
-                        nvm use node
-                        nvm alias default node
+                            nvm install node
+                            nvm use node
+                            nvm alias default node
+                        fi
+                        
+                        if ! command -v pm2 &> /dev/null; then
+                            npm install -g pm2
                         fi
 
             # Step 7: Install dependencies and start/restart the Node.js app using pm2
-            -   name: Executing remote ssh commands
+            -   name: Restart Node.js app on DreamHost VPS
                 uses: appleboy/ssh-action@master
                 with:
                     host: ${{ secrets.SSH_HOST }}
