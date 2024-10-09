@@ -43,11 +43,7 @@ export async function GET(req: Request) {
       link: `${siteUrl}/blog/${post.slug}`,
       content: post.excerpt,
       image: post.mainImage
-        ? image(post.mainImage)
-            .size(1200, 800)
-            .format('jpg')
-            .url()
-            .replaceAll('&', '&amp;')
+        ? image(post.mainImage).size(1200, 800).format('jpg').url().replaceAll('&', '&amp;')
         : undefined,
       author: post.author?.name ? [{ name: post.author.name }] : [],
       contributor: post.author?.name ? [{ name: post.author.name }] : [],

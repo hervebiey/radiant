@@ -1,33 +1,18 @@
 import { clsx } from 'clsx'
 
-export function PlusGrid({
-  className = '',
-  children,
-}: {
-  className?: string
-  children: React.ReactNode
-}) {
+export function PlusGrid({ className = '', children }: { className?: string; children: React.ReactNode }) {
   return <div className={className}>{children}</div>
 }
 
-export function PlusGridRow({
-  className = '',
-  children,
-}: {
-  className?: string
-  children: React.ReactNode
-}) {
+export function PlusGridRow({ className = '', children }: { className?: string; children: React.ReactNode }) {
   return (
     <div
       className={clsx(
         className,
-        'group/row relative isolate pt-[calc(theme(spacing.2)+1px)] last:pb-[calc(theme(spacing.2)+1px)]',
+        'group/row relative isolate pt-[calc(theme(spacing.2)+1px)] last:pb-[calc(theme(spacing.2)+1px)]'
       )}
     >
-      <div
-        aria-hidden="true"
-        className="absolute inset-y-0 left-1/2 -z-10 w-screen -translate-x-1/2"
-      >
+      <div aria-hidden="true" className="absolute inset-y-0 left-1/2 -z-10 w-screen -translate-x-1/2">
         <div className="absolute inset-x-0 top-0"></div>
         <div className="absolute inset-x-0 top-2"></div>
         <div className="absolute inset-x-0 bottom-0 hidden group-last/row:block"></div>
@@ -38,18 +23,8 @@ export function PlusGridRow({
   )
 }
 
-export function PlusGridItem({
-  className = '',
-  children,
-}: {
-  className?: string
-  children: React.ReactNode
-}) {
-  return (
-    <div className={clsx(className, 'group/item relative')}>
-      {children}
-    </div>
-  )
+export function PlusGridItem({ className = '', children }: { className?: string; children: React.ReactNode }) {
+  return <div className={clsx(className, 'group/item relative')}>{children}</div>
 }
 
 export function PlusGridIcon({
@@ -68,12 +43,7 @@ export function PlusGridIcon({
     <svg
       viewBox="0 0 15 15"
       aria-hidden="true"
-      className={clsx(
-        className,
-        'absolute size-[15px] fill-black/10',
-        yClass,
-        xClass,
-      )}
+      className={clsx(className, 'absolute size-[15px] fill-black/10', yClass, xClass)}
     >
       <path d="M8 0H7V7H0V8H7V15H8V8H15V7H8V0Z" />
     </svg>

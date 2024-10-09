@@ -1,4 +1,3 @@
-import { Avatar } from '@/components/avatar'
 import { Badge } from '@/components/badge'
 import { Button } from '@/components/button'
 import { DescriptionDetails, DescriptionList, DescriptionTerm } from '@/components/description-list'
@@ -6,11 +5,10 @@ import { Divider } from '@/components/divider'
 import { Heading, Subheading } from '@/components/heading'
 import { Link } from '@/components/link'
 import { getOrder } from '@/data'
-import { BanknotesIcon, CalendarIcon, ChevronLeftIcon, CreditCardIcon } from '@heroicons/react/16/solid'
+import { BanknotesIcon, CalendarIcon, ChevronLeftIcon } from '@heroicons/react/16/solid'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { RefundOrder } from './refund'
-import {NumberIcon} from "@sanity/icons";
+import { NumberIcon } from '@sanity/icons'
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   let order = await getOrder(params.id)

@@ -6,20 +6,9 @@ import { Link } from '@/components-radiant/link'
 import { Navbar } from '@/components-radiant/navbar'
 import { Heading, Lead, Subheading } from '@/components-radiant/text'
 import { image } from '@/sanity/image'
-import {
-  getCategories,
-  getFeaturedPosts,
-  getPosts,
-  getPostsCount,
-} from '@/sanity/queries'
+import { getCategories, getFeaturedPosts, getPosts, getPostsCount } from '@/sanity/queries'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import {
-  CheckIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ChevronUpDownIcon,
-  RssIcon,
-} from '@heroicons/react/16/solid'
+import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, ChevronUpDownIcon, RssIcon } from '@heroicons/react/16/solid'
 import { clsx } from 'clsx'
 import dayjs from 'dayjs'
 import type { Metadata } from 'next'
@@ -27,8 +16,7 @@ import { notFound } from 'next/navigation'
 
 export const metadata: Metadata = {
   title: 'Blog',
-  description:
-    'Stay informed with product updates, company news, and insights on how to sell smarter at your company.',
+  description: 'Stay informed with product updates, company news, and insights on how to sell smarter at your company.',
 }
 
 const postsPerPage = 5
@@ -58,18 +46,14 @@ async function FeaturedPosts() {
                 />
               )}
               <div className="flex flex-1 flex-col p-8">
-                <div className="text-sm/5 text-gray-700">
-                  {dayjs(post.publishedAt).format('dddd, MMMM D, YYYY')}
-                </div>
+                <div className="text-sm/5 text-gray-700">{dayjs(post.publishedAt).format('dddd, MMMM D, YYYY')}</div>
                 <div className="mt-2 text-base/7 font-medium">
                   <Link href={`/blog/${post.slug}`}>
                     <span className="absolute inset-0" />
                     {post.title}
                   </Link>
                 </div>
-                <div className="mt-2 flex-1 text-sm/6 text-gray-500">
-                  {post.excerpt}
-                </div>
+                <div className="mt-2 flex-1 text-sm/6 text-gray-500">{post.excerpt}</div>
                 {post.author && (
                   <div className="mt-6 flex items-center gap-3">
                     {post.author.image && (
@@ -79,9 +63,7 @@ async function FeaturedPosts() {
                         className="aspect-square size-6 rounded-full object-cover"
                       />
                     )}
-                    <div className="text-sm/5 text-gray-700">
-                      {post.author.name}
-                    </div>
+                    <div className="text-sm/5 text-gray-700">{post.author.name}</div>
                   </div>
                 )}
               </div>
@@ -104,8 +86,7 @@ async function Categories({ selected }: { selected?: string }) {
     <div className="flex flex-wrap items-center justify-between gap-2">
       <Menu>
         <MenuButton className="flex items-center justify-between gap-2 font-medium">
-          {categories.find(({ slug }) => slug === selected)?.title ||
-            'All categories'}
+          {categories.find(({ slug }) => slug === selected)?.title || 'All categories'}
           <ChevronUpDownIcon className="size-4 fill-slate-900" />
         </MenuButton>
         <MenuItems
@@ -145,11 +126,7 @@ async function Categories({ selected }: { selected?: string }) {
 }
 
 async function Posts({ page, category }: { page: number; category?: string }) {
-  let posts = await getPosts(
-    (page - 1) * postsPerPage,
-    page * postsPerPage,
-    category,
-  )
+  let posts = await getPosts((page - 1) * postsPerPage, page * postsPerPage, category)
 
   if (posts.length === 0 && (page > 1 || category)) {
     notFound()
@@ -179,9 +156,7 @@ async function Posts({ page, category }: { page: number; category?: string }) {
                     className="aspect-square size-6 rounded-full object-cover"
                   />
                 )}
-                <div className="text-sm/5 text-gray-700">
-                  {post.author.name}
-                </div>
+                <div className="text-sm/5 text-gray-700">{post.author.name}</div>
               </div>
             )}
           </div>
@@ -189,10 +164,7 @@ async function Posts({ page, category }: { page: number; category?: string }) {
             <h2 className="text-sm/5 font-medium">{post.title}</h2>
             <p className="mt-3 text-sm/6 text-gray-500">{post.excerpt}</p>
             <div className="mt-4">
-              <Link
-                href={`/blog/${post.slug}`}
-                className="flex items-center gap-1 text-sm/5 font-medium"
-              >
+              <Link href={`/blog/${post.slug}`} className="flex items-center gap-1 text-sm/5 font-medium">
                 <span className="absolute inset-0" />
                 Read more
                 <ChevronRightIcon className="size-4 fill-gray-400" />
@@ -205,13 +177,7 @@ async function Posts({ page, category }: { page: number; category?: string }) {
   )
 }
 
-async function Pagination({
-  page,
-  category,
-}: {
-  page: number
-  category?: string
-}) {
+async function Pagination({ page, category }: { page: number; category?: string }) {
   function url(page: number) {
     let params = new URLSearchParams()
 
@@ -234,11 +200,7 @@ async function Pagination({
 
   return (
     <div className="mt-6 flex items-center justify-between gap-2">
-      <Button
-        variant="outline"
-        href={previousPageUrl}
-        disabled={!previousPageUrl}
-      >
+      <Button variant="outline" href={previousPageUrl} disabled={!previousPageUrl}>
         <ChevronLeftIcon className="size-4" />
         Previous
       </Button>
@@ -252,7 +214,7 @@ async function Pagination({
               'size-7 rounded-lg text-center text-sm/7 font-medium',
               'data-[hover]:bg-gray-100',
               'data-[active]:shadow data-[active]:ring-1 data-[active]:ring-black/10',
-              'data-[active]:data-[hover]:bg-gray-50',
+              'data-[active]:data-[hover]:bg-gray-50'
             )}
           >
             {i + 1}
@@ -279,10 +241,7 @@ export default async function Blog({
         : notFound()
       : 1
 
-  let category =
-    typeof searchParams.category === 'string'
-      ? searchParams.category
-      : undefined
+  let category = typeof searchParams.category === 'string' ? searchParams.category : undefined
 
   return (
     <main className="overflow-hidden">
@@ -294,8 +253,7 @@ export default async function Blog({
           What’s happening at Radiant.
         </Heading>
         <Lead className="mt-6 max-w-3xl">
-          Stay informed with product updates, company news, and insights on how
-          to sell smarter at your company.
+          Stay informed with product updates, company news, and insights on how to sell smarter at your company.
         </Lead>
       </Container>
       {page === 1 && !category && <FeaturedPosts />}

@@ -3,14 +3,7 @@
 import * as Headless from '@headlessui/react'
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid'
 import { clsx } from 'clsx'
-import {
-  MotionValue,
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useSpring,
-  type HTMLMotionProps,
-} from 'framer-motion'
+import { type HTMLMotionProps, motion, MotionValue, useMotionValueEvent, useScroll, useSpring } from 'framer-motion'
 import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import useMeasure, { type RectReadOnly } from 'react-use-measure'
 import { Container } from './container'
@@ -22,29 +15,25 @@ const testimonials = [
     img: '/testimonials/tina-yards.jpg',
     name: 'Tina Yards',
     title: 'VP of Sales, Protocol',
-    quote:
-      'Thanks to Radiant, we’re finding new leads that we never would have found with legal methods.',
+    quote: 'Thanks to Radiant, we’re finding new leads that we never would have found with legal methods.',
   },
   {
     img: '/testimonials/conor-neville.jpg',
     name: 'Conor Neville',
     title: 'Head of Customer Success, TaxPal',
-    quote:
-      'Radiant made undercutting all of our competitors an absolute breeze.',
+    quote: 'Radiant made undercutting all of our competitors an absolute breeze.',
   },
   {
     img: '/testimonials/amy-chase.jpg',
     name: 'Amy Chase',
     title: 'Head of GTM, Pocket',
-    quote:
-      'We closed a deal in literally a few minutes because we knew their exact budget.',
+    quote: 'We closed a deal in literally a few minutes because we knew their exact budget.',
   },
   {
     img: '/testimonials/veronica-winton.jpg',
     name: 'Veronica Winton',
     title: 'CSO, Planeteria',
-    quote:
-      'We’ve managed to put two of our main competitors out of business in 6 months.',
+    quote: 'We’ve managed to put two of our main competitors out of business in 6 months.',
   },
   {
     img: '/testimonials/dillon-lenora.jpg',
@@ -56,8 +45,7 @@ const testimonials = [
     img: '/testimonials/harriet-arron.jpg',
     name: 'Harriet Arron',
     title: 'Account Manager, Commit',
-    quote:
-      'I’ve smashed all my targets without having to speak to a lead in months.',
+    quote: 'I’ve smashed all my targets without having to speak to a lead in months.',
   },
 ]
 
@@ -118,11 +106,7 @@ function TestimonialCard({
       {...props}
       className="relative flex aspect-[9/16] w-72 shrink-0 snap-start scroll-ml-[var(--scroll-padding)] flex-col justify-end overflow-hidden rounded-3xl sm:aspect-[3/4] sm:w-96"
     >
-      <img
-        alt=""
-        src={img}
-        className="absolute inset-x-0 top-0 aspect-square w-full object-cover"
-      />
+      <img alt="" src={img} className="absolute inset-x-0 top-0 aspect-square w-full object-cover" />
       <div
         aria-hidden="true"
         className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black from-[calc(7/16*100%)] ring-1 ring-inset ring-gray-950/10 sm:from-25%"
@@ -156,14 +140,10 @@ function CallToAction() {
   return (
     <div>
       <p className="max-w-sm text-sm/6 text-gray-600">
-        Join the best sellers in the business and start using Radiant to hit
-        your targets today.
+        Join the best sellers in the business and start using Radiant to hit your targets today.
       </p>
       <div className="mt-2">
-        <Link
-          href="#"
-          className="inline-flex items-center gap-2 text-sm/6 font-medium text-pink-600"
-        >
+        <Link href="#" className="inline-flex items-center gap-2 text-sm/6 font-medium text-pink-600">
           Get started
           <ArrowLongRightIcon className="size-5" />
         </Link>
@@ -230,14 +210,12 @@ export function Testimonials() {
               <Headless.Button
                 key={testimonialIndex}
                 onClick={() => scrollTo(testimonialIndex)}
-                data-active={
-                  activeIndex === testimonialIndex ? true : undefined
-                }
+                data-active={activeIndex === testimonialIndex ? true : undefined}
                 aria-label={`Scroll to testimonial from ${name}`}
                 className={clsx(
                   'size-2.5 rounded-full border border-transparent bg-gray-300 transition',
                   'data-[active]:bg-gray-400 data-[hover]:bg-gray-400',
-                  'forced-colors:data-[active]:bg-[Highlight] forced-colors:data-[focus]:outline-offset-4',
+                  'forced-colors:data-[active]:bg-[Highlight] forced-colors:data-[focus]:outline-offset-4'
                 )}
               />
             ))}

@@ -20,16 +20,12 @@ export const postType = defineType({
       options: {
         source: 'title',
       },
-      validation: (Rule) =>
-        Rule.required().error('A slug is required for the post URL.'),
+      validation: (Rule) => Rule.required().error('A slug is required for the post URL.'),
     }),
     defineField({
       name: 'publishedAt',
       type: 'datetime',
-      validation: (Rule) =>
-        Rule.required().error(
-          'A publication date is required for ordering posts.',
-        ),
+      validation: (Rule) => Rule.required().error('A publication date is required for ordering posts.'),
     }),
     defineField({
       name: 'isFeatured',
@@ -43,13 +39,9 @@ export const postType = defineType({
 
           let featuredPosts = await getClient({ apiVersion })
             .withConfig({ perspective: 'previewDrafts' })
-            .fetch<number>(
-              groq`count(*[_type == 'post' && isFeatured == true])`,
-            )
+            .fetch<number>(groq`count(*[_type == 'post' && isFeatured == true])`)
 
-          return featuredPosts > 3
-            ? 'Only 3 posts can be featured at a time.'
-            : true
+          return featuredPosts > 3 ? 'Only 3 posts can be featured at a time.' : true
         }),
     }),
     defineField({
@@ -96,9 +88,7 @@ export const postType = defineType({
     prepare({ title, author, media, isFeatured }) {
       return {
         title,
-        subtitle: [isFeatured && 'Featured', author && `By ${author}`]
-          .filter(Boolean)
-          .join(' | '),
+        subtitle: [isFeatured && 'Featured', author && `By ${author}`].filter(Boolean).join(' | '),
         media,
       }
     },

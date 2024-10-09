@@ -1,6 +1,4 @@
-import { Stat } from '@/app/dashboard/page'
 import { Badge } from '@/components/badge'
-import { Button } from '@/components/button'
 import { Heading, Subheading } from '@/components/heading'
 import { Link } from '@/components/link'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
@@ -28,7 +26,10 @@ export default async function Product({ params }: { params: { id: string } }) {
   return (
     <>
       <div className="max-lg:hidden">
-        <Link href="/dashboard/producten" className="inline-flex items-center gap-2 text-sm/6 text-zinc-500 dark:text-zinc-400">
+        <Link
+          href="/dashboard/producten"
+          className="inline-flex items-center gap-2 text-sm/6 text-zinc-500 dark:text-zinc-400"
+        >
           <ChevronLeftIcon className="size-4 fill-zinc-400 dark:fill-zinc-500" />
           Producten
         </Link>

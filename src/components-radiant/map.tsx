@@ -2,17 +2,7 @@
 
 import { motion } from 'framer-motion'
 
-function Marker({
-  src,
-  top,
-  offset,
-  delay,
-}: {
-  src: string
-  top: number
-  offset: number
-  delay: number
-}) {
+function Marker({ src, top, offset, delay }: { src: string; top: number; offset: number; delay: number }) {
   return (
     <motion.div
       variants={{
@@ -33,11 +23,7 @@ function Marker({
           className="fill-white"
         />
       </svg>
-      <img
-        alt=""
-        src={src}
-        className="absolute left-[7px] top-[4px] size-6 rounded-full"
-      />
+      <img alt="" src={src} className="absolute left-[7px] top-[4px] size-6 rounded-full" />
     </motion.div>
   )
 }

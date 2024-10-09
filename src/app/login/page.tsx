@@ -25,9 +25,7 @@ export default function Login() {
               </Link>
             </div>
             <h1 className="mt-8 text-base/6 font-medium">Welkom terug!</h1>
-            <p className="mt-1 text-sm/5 text-gray-600">
-              Meld u aan bij uw account om verder te gaan.
-            </p>
+            <p className="mt-1 text-sm/5 text-gray-600">Meld u aan bij uw account om verder te gaan.</p>
             <Field className="mt-8 space-y-3">
               <Label className="text-sm/5 font-medium">E-mail</Label>
               <Input
@@ -38,7 +36,7 @@ export default function Login() {
                 className={clsx(
                   'block w-full rounded-lg border border-transparent shadow ring-1 ring-black/10',
                   'px-[calc(theme(spacing.2)-1px)] py-[calc(theme(spacing[1.5])-1px)] text-base/6 sm:text-sm/6',
-                  'data-[focus]:outline data-[focus]:outline-2 data-[focus]:-outline-offset-1 data-[focus]:outline-black',
+                  'data-[focus]:outline data-[focus]:outline-2 data-[focus]:-outline-offset-1 data-[focus]:outline-black'
                 )}
               />
             </Field>
@@ -51,7 +49,7 @@ export default function Login() {
                 className={clsx(
                   'block w-full rounded-lg border border-transparent shadow ring-1 ring-black/10',
                   'px-[calc(theme(spacing.2)-1px)] py-[calc(theme(spacing[1.5])-1px)] text-base/6 sm:text-sm/6',
-                  'data-[focus]:outline data-[focus]:outline-2 data-[focus]:-outline-offset-1 data-[focus]:outline-black',
+                  'data-[focus]:outline data-[focus]:outline-2 data-[focus]:-outline-offset-1 data-[focus]:outline-black'
                 )}
               />
             </Field>
@@ -62,7 +60,7 @@ export default function Login() {
                   className={clsx(
                     'group block size-4 rounded border border-transparent shadow ring-1 ring-black/10 focus:outline-none',
                     'data-[checked]:bg-black data-[checked]:ring-black',
-                    'data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-black',
+                    'data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-black'
                   )}
                 >
                   <CheckIcon className="fill-white opacity-0 group-data-[checked]:opacity-100" />

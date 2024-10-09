@@ -4,15 +4,7 @@ import { clsx } from 'clsx'
 import { motion } from 'framer-motion'
 import { Mark } from './logo'
 
-function Circle({
-  size,
-  delay,
-  opacity,
-}: {
-  size: number
-  delay: number
-  opacity: string
-}) {
+function Circle({ size, delay, opacity }: { size: number; delay: number; opacity: string }) {
   return (
     <motion.div
       variants={{
@@ -33,7 +25,7 @@ function Circle({
       className={clsx(
         'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full',
         'bg-[radial-gradient(circle,transparent_25%,color-mix(in_srgb,_theme(colors.blue.500)_var(--opacity),transparent)_100%)]',
-        'ring-1 ring-inset ring-blue-500/[8%]',
+        'ring-1 ring-inset ring-blue-500/[8%]'
       )}
     />
   )
@@ -107,30 +99,10 @@ export function LogoCluster() {
           top={144}
           hover={{ x: 6, y: 1, rotate: 5, delay: 0.38 }}
         />
-        <Logo
-          src="/logo-cluster/dribbble.svg"
-          left={285}
-          top={20}
-          hover={{ x: 4, y: -5, rotate: 6, delay: 0.3 }}
-        />
-        <Logo
-          src="/logo-cluster/glassdoor.svg"
-          left={255}
-          top={210}
-          hover={{ x: 3, y: 5, rotate: 7, delay: 0.2 }}
-        />
-        <Logo
-          src="/logo-cluster/linkedin.svg"
-          left={144}
-          top={40}
-          hover={{ x: -2, y: -5, rotate: -6, delay: 0.15 }}
-        />
-        <Logo
-          src="/logo-cluster/upwork.svg"
-          left={36}
-          top={56}
-          hover={{ x: -4, y: -5, rotate: -6, delay: 0.35 }}
-        />
+        <Logo src="/logo-cluster/dribbble.svg" left={285} top={20} hover={{ x: 4, y: -5, rotate: 6, delay: 0.3 }} />
+        <Logo src="/logo-cluster/glassdoor.svg" left={255} top={210} hover={{ x: 3, y: 5, rotate: 7, delay: 0.2 }} />
+        <Logo src="/logo-cluster/linkedin.svg" left={144} top={40} hover={{ x: -2, y: -5, rotate: -6, delay: 0.15 }} />
+        <Logo src="/logo-cluster/upwork.svg" left={36} top={56} hover={{ x: -4, y: -5, rotate: -6, delay: 0.35 }} />
         <Logo
           src="/logo-cluster/we-work-remotely.svg"
           left={96}

@@ -13,21 +13,13 @@ import type { Metadata } from 'next'
 import { PortableText } from 'next-sanity'
 import { notFound } from 'next/navigation'
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   let post = await getPost(params.slug)
 
   return post ? { title: post.title, description: post.excerpt } : {}
 }
 
-export default async function BlogPost({
-  params,
-}: {
-  params: { slug: string }
-}) {
+export default async function BlogPost({ params }: { params: { slug: string } }) {
   let post = (await getPost(params.slug)) || notFound()
 
   return (
@@ -35,9 +27,7 @@ export default async function BlogPost({
       <GradientBackground />
       <Container>
         <Navbar />
-        <Subheading className="mt-16">
-          {dayjs(post.publishedAt).format('dddd, MMMM D, YYYY')}
-        </Subheading>
+        <Subheading className="mt-16">{dayjs(post.publishedAt).format('dddd, MMMM D, YYYY')}</Subheading>
         <Heading as="h1" className="mt-2">
           {post.title}
         </Heading>
@@ -52,9 +42,7 @@ export default async function BlogPost({
                     className="aspect-square size-6 rounded-full object-cover"
                   />
                 )}
-                <div className="text-sm/5 text-gray-700">
-                  {post.author.name}
-                </div>
+                <div className="text-sm/5 text-gray-700">{post.author.name}</div>
               </div>
             )}
             {Array.isArray(post.categories) && (
@@ -85,11 +73,7 @@ export default async function BlogPost({
                   value={post.body}
                   components={{
                     block: {
-                      normal: ({ children }) => (
-                        <p className="my-10 text-base/8 first:mt-0 last:mb-0">
-                          {children}
-                        </p>
-                      ),
+                      normal: ({ children }) => <p className="my-10 text-base/8 first:mt-0 last:mb-0">{children}</p>,
                       h2: ({ children }) => (
                         <h2 className="mb-10 mt-12 text-2xl/8 font-medium tracking-tight text-gray-950 first:mt-0 last:mb-0">
                           {children}
@@ -117,9 +101,7 @@ export default async function BlogPost({
                       separator: ({ value }) => {
                         switch (value.style) {
                           case 'line':
-                            return (
-                              <hr className="my-8 border-t border-gray-200" />
-                            )
+                            return <hr className="my-8 border-t border-gray-200" />
                           case 'space':
                             return <div className="my-8" />
                           default:
@@ -129,44 +111,26 @@ export default async function BlogPost({
                     },
                     list: {
                       bullet: ({ children }) => (
-                        <ul className="list-disc pl-4 text-base/8 marker:text-gray-400">
-                          {children}
-                        </ul>
+                        <ul className="list-disc pl-4 text-base/8 marker:text-gray-400">{children}</ul>
                       ),
                       number: ({ children }) => (
-                        <ol className="list-decimal pl-4 text-base/8 marker:text-gray-400">
-                          {children}
-                        </ol>
+                        <ol className="list-decimal pl-4 text-base/8 marker:text-gray-400">{children}</ol>
                       ),
                     },
                     listItem: {
                       bullet: ({ children }) => {
-                        return (
-                          <li className="my-2 pl-2 has-[br]:mb-8">
-                            {children}
-                          </li>
-                        )
+                        return <li className="my-2 pl-2 has-[br]:mb-8">{children}</li>
                       },
                       number: ({ children }) => {
-                        return (
-                          <li className="my-2 pl-2 has-[br]:mb-8">
-                            {children}
-                          </li>
-                        )
+                        return <li className="my-2 pl-2 has-[br]:mb-8">{children}</li>
                       },
                     },
                     marks: {
-                      strong: ({ children }) => (
-                        <strong className="font-semibold text-gray-950">
-                          {children}
-                        </strong>
-                      ),
+                      strong: ({ children }) => <strong className="font-semibold text-gray-950">{children}</strong>,
                       code: ({ children }) => (
                         <>
                           <span aria-hidden>`</span>
-                          <code className="text-[15px]/8 font-semibold text-gray-950">
-                            {children}
-                          </code>
+                          <code className="text-[15px]/8 font-semibold text-gray-950">{children}</code>
                           <span aria-hidden>`</span>
                         </>
                       ),

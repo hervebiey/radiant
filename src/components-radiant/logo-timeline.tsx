@@ -11,22 +11,14 @@ function Row({ children }: { children: React.ReactNode }) {
   )
 }
 
-function Logo({
-  label,
-  src,
-  className,
-}: {
-  label: string
-  src: string
-  className: string
-}) {
+function Logo({ label, src, className }: { label: string; src: string; className: string }) {
   return (
     <div
       className={clsx(
         className,
         'absolute top-2 grid grid-cols-[1rem,1fr] items-center gap-2 whitespace-nowrap px-3 py-1',
         'rounded-full bg-gradient-to-t from-gray-800 from-50% to-gray-700 ring-1 ring-inset ring-white/10',
-        '[--move-x-from:-100%] [--move-x-to:calc(100%+100cqw)] [animation-iteration-count:infinite] [animation-name:move-x] [animation-play-state:paused] [animation-timing-function:linear] group-hover:[animation-play-state:running]',
+        '[--move-x-from:-100%] [--move-x-to:calc(100%+100cqw)] [animation-iteration-count:infinite] [animation-name:move-x] [animation-play-state:paused] [animation-timing-function:linear] group-hover:[animation-play-state:running]'
       )}
     >
       <img alt="" src={src} className="size-4" />

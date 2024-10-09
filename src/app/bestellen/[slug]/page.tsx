@@ -45,7 +45,8 @@ function Testimonial() {
       <figure className="relative p-10">
         <blockquote>
           <p className="relative text-xl/7 text-white before:absolute before:-translate-x-full before:content-['“'] after:absolute after:content-['”']">
-            Onze inspecties werden snel ingepland en de rapporten werden snel geleverd, waardoor ons project zonder vertragingen kon worden voortgezet.
+            Onze inspecties werden snel ingepland en de rapporten werden snel geleverd, waardoor ons project zonder
+            vertragingen kon worden voortgezet.
           </p>
         </blockquote>
         <figcaption className="mt-6 border-t border-white/20 pt-6">
@@ -69,16 +70,16 @@ function ProductOrder({ product }: { product: { name: string; price: number } })
   const [phoneNumber, setPhoneNumber] = useState('')
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
-  
+
   const totalPrice = product.price * quantity
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     alert(
-        `${product.name} besteld! Facturatie: ${billingInfo}, Adres: ${address}, Naam: ${name}, Telefoon: ${phoneNumber}, Email: ${email}, Aantal: ${quantity}, Startdatum: ${startDate}, Totaal: €${totalPrice}`
+      `${product.name} besteld! Facturatie: ${billingInfo}, Adres: ${address}, Naam: ${name}, Telefoon: ${phoneNumber}, Email: ${email}, Aantal: ${quantity}, Startdatum: ${startDate}, Totaal: €${totalPrice}`
     )
   }
-  
+
   const addToCart = () => {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]')
     const newItem = { name: product.name, price: product.price, quantity }
@@ -99,13 +100,13 @@ function ProductOrder({ product }: { product: { name: string; price: number } })
                   Facturatiegegevens
                 </label>
                 <input
-                    id="billingInfo"
-                    type="text"
-                    className="mt-1 block w-full rounded-md border p-2"
-                    placeholder="Bedrijfsnaam of klantnaam"
-                    value={billingInfo}
-                    onChange={(e) => setBillingInfo(e.target.value)}
-                    required
+                  id="billingInfo"
+                  type="text"
+                  className="mt-1 block w-full rounded-md border p-2"
+                  placeholder="Bedrijfsnaam of klantnaam"
+                  value={billingInfo}
+                  onChange={(e) => setBillingInfo(e.target.value)}
+                  required
                 />
               </div>
               <div>
@@ -113,13 +114,13 @@ function ProductOrder({ product }: { product: { name: string; price: number } })
                   Contactpersoon
                 </label>
                 <input
-                    id="name"
-                    type="text"
-                    className="mt-1 block w-full rounded-md border p-2"
-                    placeholder="Naam van contactpersoon"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
+                  id="name"
+                  type="text"
+                  className="mt-1 block w-full rounded-md border p-2"
+                  placeholder="Naam van contactpersoon"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
                 />
               </div>
               <div>
@@ -127,13 +128,13 @@ function ProductOrder({ product }: { product: { name: string; price: number } })
                   Telefoonnummer
                 </label>
                 <input
-                    id="phoneNumber"
-                    type="tel"
-                    className="mt-1 block w-full rounded-md border p-2"
-                    placeholder="Telefoonnummer van contactpersoon"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    required
+                  id="phoneNumber"
+                  type="tel"
+                  className="mt-1 block w-full rounded-md border p-2"
+                  placeholder="Telefoonnummer van contactpersoon"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  required
                 />
               </div>
               <div>
@@ -141,13 +142,13 @@ function ProductOrder({ product }: { product: { name: string; price: number } })
                   E-mailadres
                 </label>
                 <input
-                    id="email"
-                    type="email"
-                    className="mt-1 block w-full rounded-md border p-2"
-                    placeholder="E-mailadres van contactpersoon"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
+                  id="email"
+                  type="email"
+                  className="mt-1 block w-full rounded-md border p-2"
+                  placeholder="E-mailadres van contactpersoon"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
               <div>
@@ -155,13 +156,13 @@ function ProductOrder({ product }: { product: { name: string; price: number } })
                   Adres
                 </label>
                 <input
-                    id="address"
-                    type="text"
-                    className="mt-1 block w-full rounded-md border p-2"
-                    placeholder="Installatieadres"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    required
+                  id="address"
+                  type="text"
+                  className="mt-1 block w-full rounded-md border p-2"
+                  placeholder="Installatieadres"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  required
                 />
               </div>
               <div>
@@ -169,12 +170,12 @@ function ProductOrder({ product }: { product: { name: string; price: number } })
                   Installatie na deze datum
                 </label>
                 <input
-                    id="startDate"
-                    type="date"
-                    className="mt-1 block w-full rounded-md border p-2"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                    required
+                  id="startDate"
+                  type="date"
+                  className="mt-1 block w-full rounded-md border p-2"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  required
                 />
               </div>
               <div>
@@ -182,16 +183,16 @@ function ProductOrder({ product }: { product: { name: string; price: number } })
                   Aantal
                 </label>
                 <input
-                    id="quantity"
-                    type="number"
-                    min="1"
-                    className="mt-1 block w-full rounded-md border p-2"
-                    value={quantity}
-                    onChange={(e) => setQuantity(Number(e.target.value))}
-                    required
+                  id="quantity"
+                  type="number"
+                  min="1"
+                  className="mt-1 block w-full rounded-md border p-2"
+                  value={quantity}
+                  onChange={(e) => setQuantity(Number(e.target.value))}
+                  required
                 />
               </div>
-              
+
               <div className="flex items-center justify-between">
                 <div className="text-lg font-semibold">Totaalprijs: €{totalPrice.toFixed(2)}</div>
                 <Button onClick={addToCart}>Aan winkelwagen toevoegen</Button>
@@ -199,26 +200,26 @@ function ProductOrder({ product }: { product: { name: string; price: number } })
             </form>
           </div>
         </div>
-        <Testimonial/>
+        <Testimonial />
       </div>
     </Container>
   )
 }
 
-export default function ProductPage({params}: { params: { slug: string } }) {
+export default function ProductPage({ params }: { params: { slug: string } }) {
   const slug = params.slug as ProductSlug
-  
+
   const product = products[slug]
-  
+
   return (
-      <main className="overflow-hidden">
-        <GradientBackground/>
-        <Container>
-          <Navbar/>
-        </Container>
-        <Header product={product}/>
-        <ProductOrder product={product}/>
-        <Footer/>
-      </main>
+    <main className="overflow-hidden">
+      <GradientBackground />
+      <Container>
+        <Navbar />
+      </Container>
+      <Header product={product} />
+      <ProductOrder product={product} />
+      <Footer />
+    </main>
   )
 }

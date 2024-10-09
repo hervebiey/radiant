@@ -17,7 +17,7 @@ function Rings() {
       fill="none"
       className={clsx(
         'col-start-1 row-start-1 size-full',
-        '[mask-composite:intersect] [mask-image:linear-gradient(to_bottom,black_90%,transparent),radial-gradient(circle,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_100%)]',
+        '[mask-composite:intersect] [mask-image:linear-gradient(to_bottom,black_90%,transparent),radial-gradient(circle,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_100%)]'
       )}
     >
       {Array.from(Array(42).keys()).map((n) => (

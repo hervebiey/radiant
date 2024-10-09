@@ -1,13 +1,11 @@
 import { Badge } from '@/components/badge'
-import { Button } from '@/components/button'
 import { Divider } from '@/components/divider'
-import { Dropdown, DropdownButton, DropdownItem, DropdownMenu } from '@/components/dropdown'
 import { Heading } from '@/components/heading'
 import { Input, InputGroup } from '@/components/input'
 import { Link } from '@/components/link'
 import { Select } from '@/components/select'
 import { getProducts } from '@/data'
-import { EllipsisVerticalIcon, MagnifyingGlassIcon } from '@heroicons/react/16/solid'
+import { MagnifyingGlassIcon } from '@heroicons/react/16/solid'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -52,9 +50,7 @@ export default async function Producten() {
                     <div className="text-xs/6 text-zinc-500">
                       {product.price} excl. BTW <span aria-hidden="true">·</span> Laatst besteld op {product.date}
                     </div>
-                    <div className="text-xs/6 text-zinc-600">
-                      Aantal keren besteld: {product.ticketsAvailable}
-                    </div>
+                    <div className="text-xs/6 text-zinc-600">Aantal keren besteld: {product.ticketsAvailable}</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
